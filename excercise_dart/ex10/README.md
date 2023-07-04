@@ -1,0 +1,7 @@
+# Exercise 10
+
+Ask the user for a number and determine whether the number is prime or not.
+
+Do it using a function
+
+![Alt text](image.png)
