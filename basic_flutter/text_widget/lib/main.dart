@@ -1,18 +1,35 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MainApp());
+  // runApp(const MainApp());
+  runApp(MaterialApp(
+    home: SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Text Widget'),
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              myWidget(),
+              SizedBox(height: 20),
+              myWidget2(),
+            ],
+          ),
+        ),
+      ),
+    ),
+    debugShowCheckedModeBanner: false,
+    ),
+    
+  );
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
-
+class myWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text(
+    return const Text(
             'Hello World! '
             'A run of text with a single style.'
             'The Text widget displays a string of '
@@ -42,24 +59,38 @@ class MainApp extends StatelessWidget {
               height: 1.5,
               leadingDistribution: TextLeadingDistribution.even,
             ),
-          ),
-          // Text.rich
-          //     child: Text.rich(
-          //   TextSpan(
-          //     children: [
-          //       TextSpan(text: 'This text is '),
-          //       TextSpan(
-          //           text: 'bold', style: TextStyle(fontWeight: FontWeight.bold)),
-          //       TextSpan(
-          //           text: ' and this text is ', style: TextStyle(fontSize: 24)),
-          //       TextSpan(
-          //           text: 'italic',
-          //           style: TextStyle(fontStyle: FontStyle.italic)),
-          //     ],
-          //   ),
-          // )
-        ),
-      ),
+    );
+  }
+
+}
+// RichText Widget
+class myWidget2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return RichText(
+      text: TextSpan(
+        style: DefaultTextStyle.of(context).style,
+        children: const <TextSpan>[
+          TextSpan(
+              text: 'Hello ',
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blue, 
+                  fontSize: 20)),
+          TextSpan(
+              text: 'World! ',
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.red,
+                  fontSize: 20)),
+          TextSpan(
+              text: '2024 ',
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(255, 7, 30, 50),
+                  fontSize: 20)),
+        ],
+      )
     );
   }
 }
