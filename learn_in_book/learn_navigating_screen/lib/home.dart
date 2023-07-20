@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'card1.dart';
+import 'card2.dart';
+import 'card3.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -10,9 +13,9 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int _selectedIndex = 0;
   static List<Widget> pages = <Widget>[
-    Container(color: Colors.red),
-    Container(color: Colors.green),
-    Container(color: Colors.blue),
+    const Card1(),
+    const Card2(),
+    const Card3(),
   ];
 
   void _onItemTapped(int index) {
@@ -21,16 +24,16 @@ class _HomeState extends State<Home> {
     });
   }
 
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+          title: Center(
+        child: Text(
           'Lantuyan',
           style: Theme.of(context).textTheme.headline6,
         ),
-      ),
+      )),
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Theme.of(context).textSelectionTheme.selectionColor,
         items: [

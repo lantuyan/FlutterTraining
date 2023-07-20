@@ -1,5 +1,4 @@
 // ignore_for_file: deprecated_member_use
-
 import 'package:flutter/material.dart';
 import 'fooderlich_theme.dart';
 import 'home.dart';
@@ -17,6 +16,8 @@ class MainApp extends StatelessWidget {
       theme: theme,
       title: 'Lantuyan',
       home: const Home(),
+      debugShowCheckedModeBanner: false,
+
     );
   }
 }
