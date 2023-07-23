@@ -11,6 +11,7 @@ class GroceryItem {
   final String name;
   final Importance importance;
   final Color color;
+  final int quantity;
   final DateTime date;
   final bool isComplete;
 
@@ -19,6 +20,7 @@ class GroceryItem {
     required this.name,
     required this.importance,
     required this.color,
+    required this.quantity,
     required this.date,
     this.isComplete = false,
   });
@@ -28,6 +30,7 @@ class GroceryItem {
     String? name,
     Importance? importance,
     Color? color,
+    int? quantity,
     DateTime? date,
     bool? isComplete,
   }) {
@@ -36,6 +39,7 @@ class GroceryItem {
       name: name ?? this.name,
       importance: importance ?? this.importance,
       color: color ?? this.color,
+      quantity: quantity ?? this.quantity,
       date: date ?? this.date,
       isComplete: isComplete ?? this.isComplete,
     );

@@ -13,7 +13,7 @@ class Home extends StatefulWidget {
 }
 
 class HomeState extends State<Home> {
-  int _selectedIndex = 0;
+  // int _selectedIndex = 0;
 
   static List<Widget> pages = <Widget>[
     ExploreScreen(),
@@ -22,11 +22,11 @@ class HomeState extends State<Home> {
   ];
 
 // no need more because we use provider - TabManager
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+  // void _onItemTapped(int index) {
+  //   setState(() {
+  //     _selectedIndex = index;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,11 @@ class HomeState extends State<Home> {
               style: Theme.of(context).textTheme.headline6,
             ),
           )),
-          body: pages[tabManager.selectedTab],
+          // body: pages[tabManager.selectedTab],
+          body: IndexedStack(
+            index: tabManager.selectedTab,
+            children:pages,
+          ),
           bottomNavigationBar: BottomNavigationBar(
             selectedItemColor:
                 Theme.of(context).textSelectionTheme.selectionColor,
