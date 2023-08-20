@@ -14,12 +14,13 @@ class GroceryScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
         onPressed: () {
+          // TODO: Create New Item
           context.goNamed(
             'item',
-            params: {
+            pathParameters: {
               'tab': '${FooderlichTab.toBuy}',
-              'id': 'new',
-            },
+              'id': 'new'
+            }
           );
         },
       ),

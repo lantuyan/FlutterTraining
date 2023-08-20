@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
+
 import '../components/circle_image.dart';
 import '../models/models.dart';
+
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:io';
@@ -10,12 +12,8 @@ import 'dart:io';
 class ProfileScreen extends StatefulWidget {
   final User user;
   final int currentTab;
-
-  const ProfileScreen({
-    super.key,
-    required this.user,
-    required this.currentTab,
-  });
+  const ProfileScreen(
+      {super.key, required this.user, required this.currentTab});
 
   @override
   ProfileScreenState createState() => ProfileScreenState();
@@ -49,11 +47,14 @@ class ProfileScreenState extends State<ProfileScreen> {
           title: const Text('View raywenderlich.com'),
           onTap: () async {
             if (kIsWeb || Platform.isMacOS) {
-              await launchUrl(Uri.parse('https://www.raywenderlich.com/'));
+              await launchUrl(Uri.parse('https://www.google.com'));
             } else {
+              // TODO: Navigate to WebView
               context.goNamed(
                 'rw',
-                params: {'tab': '${widget.currentTab}'},
+                pathParameters: {
+                  'tab': '${widget.currentTab}'
+                }
               );
             }
           },
@@ -61,6 +62,7 @@ class ProfileScreenState extends State<ProfileScreen> {
         ListTile(
           title: const Text('Log out'),
           onTap: () {
+            // TODO: Logout user
             Provider.of<AppStateManager>(context, listen: false).logout();
           },
         )

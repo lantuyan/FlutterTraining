@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../models/models.dart';
+
+import '../models/app_state_manager.dart';
 
 class EmptyGroceryScreen extends StatelessWidget {
   const EmptyGroceryScreen({super.key});
@@ -36,11 +37,12 @@ class EmptyGroceryScreen extends StatelessWidget {
               ),
               color: Colors.green,
               onPressed: () {
+                // TODO: Go to recipes
                 context.goNamed(
                   'home',
-                  params: {
+                  pathParameters: {
                     'tab': '${FooderlichTab.recipes}',
-                  },
+                  }
                 );
               },
               child: const Text('Browse Recipes'),
