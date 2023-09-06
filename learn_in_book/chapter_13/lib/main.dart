@@ -2,6 +2,9 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
+import 'package:provider/provider.dart';
+import 'data/memory_repository.dart';
+import 'mock_service/mock_service.dart';
 
 import 'ui/main_screen.dart';
 
@@ -24,16 +27,43 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Recipes',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        brightness: Brightness.light,
-        primaryColor: Colors.white,
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+    // return ChangeNotifierProvider(
+    //   lazy: false,
+    //   create: (_) => MemoryRepository(),
+    //   child: MaterialApp(
+    //     title: 'Recipes',
+    //     debugShowCheckedModeBanner: false,
+    //     theme: ThemeData(
+    //       brightness: Brightness.light,
+    //       primaryColor: Colors.white,
+    //       primarySwatch: Colors.blue,
+    //       visualDensity: VisualDensity.adaptivePlatformDensity,
+    //     ),
+    //     home: const MainScreen(),
+    //   ),
+    // );
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          lazy: false,
+          create: (context) => MemoryRepository(),
+        ),
+        Provider(
+          lazy: false,
+          create: (context) => MockService()..create(),
+        )
+      ],
+      child: MaterialApp(
+        title: 'Recipes',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          brightness: Brightness.light,
+          primaryColor: Colors.white,
+          primarySwatch: Colors.blue,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        home: const MainScreen(),
       ),
-      home: const MainScreen(),
     );
   }
 }
